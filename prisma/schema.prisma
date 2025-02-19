@@ -34,3 +34,11 @@ model School {
   lowestGrade  Int
   highestGrade Int
 }
+
+model Classroom {
+  classroomId String @id @default(uuid())
+  teacherId   String @unique
+  schoolId    String
+  name        String
+  capacity    Int
+}
