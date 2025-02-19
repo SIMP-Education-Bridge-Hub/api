@@ -22,3 +22,15 @@ model User {
   email   String?
   phone   String?
 }
+
+model School {
+  schoolId     String @id @default(uuid())
+  principalId  String @unique
+  name         String
+  email        String
+  phone        String
+  address      String
+  capacity     Int
+  lowestGrade  Int
+  highestGrade Int
+}
