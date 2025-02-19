@@ -53,3 +53,9 @@ model Role {
   roleId String @id @default(uuid())
   title  String
 }
+
+model RolePermission {
+  rolePermissionId String @id @default(uuid())
+  roleId           String
+  permissionId     String
+}
