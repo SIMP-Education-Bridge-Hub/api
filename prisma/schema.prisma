@@ -22,13 +22,10 @@ model User {
   email   String?
   phone   String?
 
-  // Link user to role
   role Role @relation(fields: [roleId], references: [roleId])
 
-  // Principals and teachers must belong to a school
   school School?
 
-  // A classroom must have a class teacher
   classroom Classroom?
 }
 
@@ -54,8 +51,8 @@ model Classroom {
   name        String
   capacity    Int
 
-  teacher User   @relation(fields: [teacherId], references: [userId])
   school  School @relation(fields: [schoolId], references: [schoolId])
+  teacher User   @relation(fields: [teacherId], references: [userId])
 }
 
 model Permission {
@@ -70,9 +67,8 @@ model Role {
   roleId String @id @default(uuid())
   title  String
 
-  rolePermissions RolePermission[]
-
   users User[]
+  rolePermissions RolePermission[]
 }
 
 model RolePermission {
