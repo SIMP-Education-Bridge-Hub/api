@@ -48,3 +48,8 @@ model Permission {
   action       String
   table        String
 }
+
+model Role {
+  roleId String @id @default(uuid())
+  title  String
+}
