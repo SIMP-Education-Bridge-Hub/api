@@ -42,3 +42,9 @@ model Classroom {
   name        String
   capacity    Int
 }
+
+model Permission {
+  permissionId String @id @default(uuid())
+  action       String
+  table        String
+}
