@@ -21,6 +21,9 @@ model User {
   status  String
   email   String?
   phone   String?
+
+  // Link user to role
+  role Role @relation(fields: [roleId], references: [roleId])
 }
 
 model School {
@@ -56,6 +59,8 @@ model Role {
   title  String
 
   rolePermissions RolePermission[]
+
+  users User[]
 }
 
 model RolePermission {
