@@ -47,15 +47,22 @@ model Permission {
   permissionId String @id @default(uuid())
   action       String
   table        String
+
+  rolePermissions RolePermission[]
 }
 
 model Role {
   roleId String @id @default(uuid())
   title  String
+
+  rolePermissions RolePermission[]
 }
 
 model RolePermission {
   rolePermissionId String @id @default(uuid())
   roleId           String
   permissionId     String
+
+  role       Role       @relation(fields: [roleId], references: [roleId])
+  permission Permission @relation(fields: [permissionId], references: [permissionId])
 }
