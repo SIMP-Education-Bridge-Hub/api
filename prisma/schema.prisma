@@ -24,6 +24,9 @@ model User {
 
   // Link user to role
   role Role @relation(fields: [roleId], references: [roleId])
+
+  // Principals and teachers must belong to a school
+  school School?
 }
 
 model School {
@@ -36,6 +39,8 @@ model School {
   capacity     Int
   lowestGrade  Int
   highestGrade Int
+
+  principal User @relation(fields: [principalId], references: [userId])
 }
 
 model Classroom {
