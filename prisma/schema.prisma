@@ -44,6 +44,7 @@ model School {
   highestGrade Int
 
   principal User @relation(fields: [principalId], references: [userId])
+  classrooms Classroom[]
 }
 
 model Classroom {
@@ -54,6 +55,7 @@ model Classroom {
   capacity    Int
 
   teacher User   @relation(fields: [teacherId], references: [userId])
+  school  School @relation(fields: [schoolId], references: [schoolId])
 }
 
 model Permission {
