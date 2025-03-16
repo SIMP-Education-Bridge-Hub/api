@@ -29,7 +29,7 @@ export const registerUser = async (req, res) => {
         email,
         password: hashedPassword,
         phone: "0794194768",
-        userTypeId: {
+        type: {
           connect: { userTypeId: "0627fd10-09ed-4cf6-948f-336b1da7d54d" },
         },
       },
