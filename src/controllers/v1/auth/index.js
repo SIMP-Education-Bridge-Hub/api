@@ -30,7 +30,7 @@ export const registerUser = async (req, res) => {
         password: hashedPassword,
         phone: "0794194768",
         userTypeId: {
-          connect: { userTypeId: "5bd7727d-6fcf-49f0-bce0-d7ff546ea6e9" },
+          connect: { userTypeId: "0627fd10-09ed-4cf6-948f-336b1da7d54d" },
         },
       },
     });
