@@ -1,9 +1,8 @@
 import express from "express";
-import { authMiddleware } from "../../middleware/auth/index.js";
 
 const router = express.Router();
 
-router.get("/profile", authMiddleware, (req, res) => {
+router.get("/profile", (req, res) => {
   res.json({ message: "Welcome to your profile", userId: req.user.userId });
 });
 
