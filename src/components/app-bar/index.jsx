@@ -12,7 +12,7 @@ import { styled } from "@mui/material/styles";
 import { useAppContext } from "@/context/app";
 import { COLORS, APP } from "@/constants/system";
 
-const drawerWidth = "15vw";
+const drawerWidth = "20vw";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "drawerOpen",
@@ -38,7 +38,7 @@ const AppBarComponent = () => {
     <AppBar
       position={`fixed`}
       drawerOpen={drawerOpen}
-      sx={{ bgcolor: !loading ? COLORS.BACKGROUND : "transparent" }}
+      sx={{ bgcolor: COLORS.PRIMARY, color: COLORS.WHITE }}
     >
       <Toolbar sx={{}}>
         <IconButton
@@ -49,18 +49,12 @@ const AppBarComponent = () => {
           edge="start"
           sx={{
             mr: 2,
-            color: COLORS.PRIMARY,
             ...(drawerOpen && { display: "none" }),
           }}
         >
           <Menu />
         </IconButton>
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ color: COLORS.PRIMARY }}
-        >
+        <Typography variant="h6" noWrap component="div">
           {APP.NAME}
         </Typography>
       </Toolbar>
