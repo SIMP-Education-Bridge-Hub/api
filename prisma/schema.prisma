@@ -31,3 +31,13 @@ model User {
 
   type UserType @relation(fields: [userTypeId], references: [userTypeId])
 }
+
+model Token {
+  tokenId String @id @default(uuid())
+  token String
+  expiresAt DateTime?
+  createdAt DateTime
+  updatedAt DateTime
+  createdBy String
+  updatedBy String
+}
