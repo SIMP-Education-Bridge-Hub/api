@@ -13,7 +13,7 @@ export const JWT_VALIDATION_SCHEMA = Yup.object().shape({
       then: (schema) =>
         schema.shape({
           route: Yup.string().required(
-            "Route name is required'"
+            "Route is required'"
           ),
         }),
     }),
