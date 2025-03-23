@@ -13,28 +13,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model UserType {
-  userTypeId String @id @default(uuid())
-  type       String
+model Role {
+  roleId String @id @default(uuid())
+  role   String @unique
 
-  users User[]
+  userRoles UserRole[]
+}
+
+model UserRole {
+  userTypeId String @id @default(uuid())
+  roleId     String
+  userId     String
+
+  role Role @relation(fields: [roleId], references: [roleId], onDelete: Cascade, onUpdate: Cascade)
+  user User @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([userId, roleId])
 }
 
 model User {
-  userId     String @id @default(uuid())
-  userTypeId String
-  name       String
-  surname    String
-  email      String @unique
+  userId     String  @id @default(uuid())
+  firstName  String
+  secondName String?
+  thirdName  String?
+  lastName   String
+  email      String  @unique
   password   String
-  phone      String @unique
+  phone      String  @unique
 
-  type UserType @relation(fields: [userTypeId], references: [userTypeId])
+  userRoles UserRole[]
 }
 
 model Token {
-  tokenId String @id @default(uuid())
-  token String
+  tokenId   String    @id @default(uuid())
+  token     String
   expiresAt DateTime?
   createdAt DateTime
   updatedAt DateTime
