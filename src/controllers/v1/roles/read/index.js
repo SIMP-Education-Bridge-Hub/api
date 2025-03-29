@@ -21,7 +21,7 @@ export const readRoles = async (req, res) => {
   } catch (error) {
     console.log("Error", error);
 
-    res.status(500).json({ message: "Error registering user", error });
+    res.status(500).json({ message: error?.message ?? error });
   }
 };
 
